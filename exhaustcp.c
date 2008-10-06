@@ -27,12 +27,7 @@ void tcp_answer_ack(u_char *user, const struct pcap_pkthdr *pcap, const u_char *
 	len = pcap->caplen - pcap_off;
 
 	ip = (struct libnet_ipv4_hdr *)pkt;
-	if (ip->ip_p != IPPROTO_TCP)
-		return;
-	
 	tcp = (struct libnet_tcp_hdr *)(pkt + (ip->ip_hl << 2));
-	if (tcp->th_flags != (TH_SYN|TH_ACK))
-		return;
 
 	seq = ntohl(tcp->th_ack);
 	ack = ntohl(tcp->th_seq) + 1;
