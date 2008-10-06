@@ -89,7 +89,8 @@ void handle_signal(int signal) {
 
 int main(int argc, char *argv[])
 {
-	unsigned int port, opt;
+	unsigned int port;
+	int opt;
 	unsigned long delay;
 	pid_t pid;
 	char *interface, *endptr;
@@ -130,7 +131,7 @@ int main(int argc, char *argv[])
 	if (*endptr != '\0') {
 		errx(1, "invalid delay: %s", argv[2]);
 	} else if ((errno == ERANGE &&
-	    (delay == LONG_MAX || delay == LONG_MIN)) ||
+	    (delay == LONG_MAX)) ||
 	    (errno != 0 && delay == 0)) {
 		errx(1, "invalid delay (%s): %s", strerror(errno), argv[2]);
 	}
