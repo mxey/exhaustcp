@@ -38,7 +38,7 @@
 
 #include <err.h>
 #include <libnet.h>
-#include <limts.h>
+#include <limits.h>
 #include <pcap.h>
 #include <signal.h>
 #include <stdio.h>
